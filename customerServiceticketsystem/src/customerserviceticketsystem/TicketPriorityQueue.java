@@ -3,36 +3,36 @@ package CustomerServiceticketsystem;
 
 public class TicketPriorityQueue {
 
-    // Maximum number of tickets
+   
     private static final int MAX_SIZE = 100;
 
-    // Array that stores the tickets
+   
     private ServiceTicket[] tickets;
 
-    // Current number of tickets
+    
     private int size;
 
-    // Constructor
+   
     public TicketPriorityQueue() {
         tickets = new ServiceTicket[MAX_SIZE];
         size = 0;
     }
 
-    // Check if the queue is empty
+    
     public boolean isEmpty() {
         return size == 0;
     }
 
-    // Check if the queue is full
+    
     public boolean isFull() {
         return size == MAX_SIZE;
     }
 
-    // Get the number of tickets
+    
     public int getSize() {
         return size;
     }
-    // Get a ticket at a specific array position
+    
 public ServiceTicket getTicketAt(int index) {
 
     if (index < 0 || index >= size) {
@@ -42,7 +42,7 @@ public ServiceTicket getTicketAt(int index) {
     return tickets[index];
 }
 
-    // Insert a ticket into the priority queue
+    
     public void insertTicket(ServiceTicket ticket) {
 
         if (ticket == null) {
@@ -60,7 +60,7 @@ public ServiceTicket getTicketAt(int index) {
         tickets[size] = ticket;
         size++;
 
-        // Arrange tickets by priority
+       
         int current = size - 1;
 
         while (current > 0 &&
@@ -77,7 +77,7 @@ public ServiceTicket getTicketAt(int index) {
         }
     }
 
-    // View the highest-priority ticket
+    
     public ServiceTicket peekHighestPriority() {
 
         if (isEmpty()) {
@@ -87,7 +87,7 @@ public ServiceTicket getTicketAt(int index) {
         return tickets[0];
     }
 
-    // Remove and return the highest-priority ticket
+    
     public ServiceTicket removeHighestPriority() {
 
         if (isEmpty()) {
@@ -96,7 +96,7 @@ public ServiceTicket getTicketAt(int index) {
 
         ServiceTicket removedTicket = tickets[0];
 
-        // Shift remaining tickets to the left
+      
         for (int i = 0; i < size - 1; i++) {
             tickets[i] = tickets[i + 1];
         }
@@ -107,7 +107,7 @@ public ServiceTicket getTicketAt(int index) {
         return removedTicket;
     }
 
-    // Display all tickets in priority order
+    
     public void displayTickets() {
 
         if (isEmpty()) {
@@ -126,14 +126,14 @@ public ServiceTicket getTicketAt(int index) {
         }
     }
 
-    // Search for a ticket using its ID
+    
     public ServiceTicket searchTicket(String ticketID) {
 
         if (ticketID == null || ticketID.trim().isEmpty()) {
             return null;
         }
 
-        // Manual linear search
+   
         for (int i = 0; i < size; i++) {
 
             if (tickets[i].getTicketID().equalsIgnoreCase(
