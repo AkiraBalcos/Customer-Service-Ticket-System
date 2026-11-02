@@ -1,6 +1,5 @@
 
 package customerserviceticketsystem;
-import CustomerServiceticketsystem.mainFrame;
 import javax.swing.SwingUtilities;
 
 public class CustomerServiceticketsystem {
