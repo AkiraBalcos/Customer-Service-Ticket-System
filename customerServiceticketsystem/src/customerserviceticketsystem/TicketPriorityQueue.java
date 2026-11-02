@@ -32,6 +32,15 @@ public class TicketPriorityQueue {
     public int getSize() {
         return size;
     }
+    // Get a ticket at a specific array position
+public ServiceTicket getTicketAt(int index) {
+
+    if (index < 0 || index >= size) {
+        return null;
+    }
+
+    return tickets[index];
+}
 
     // Insert a ticket into the priority queue
     public void insertTicket(ServiceTicket ticket) {
