@@ -106,18 +106,22 @@ public class TicketManager {
 
         return false;
     }
+    public void clearTickets() {
+    head = null;
+    size = 0;
+}
 
-    // GET TICKET COUNT
+   
     public int getSize() {
         return size;
     }
 
-    // CHECK IF EMPTY
+    
     public boolean isEmpty() {
         return head == null;
     }
 
-    // GET TICKET BY POSITION
+     
     public Ticket getTicketAt(int index) {
 
         if (index < 0 || index >= size) {
