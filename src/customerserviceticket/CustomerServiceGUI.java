@@ -129,6 +129,11 @@ private final TicketManager ticketManager = new TicketManager();
         });
 
         btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
         tblTickets.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -442,6 +447,10 @@ private void clearFields() {
     }
        
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+ clearFields();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnClearActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
