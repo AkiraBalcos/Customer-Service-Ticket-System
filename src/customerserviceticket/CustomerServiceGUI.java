@@ -108,6 +108,11 @@ private final TicketManager ticketManager = new TicketManager();
         });
 
         btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setText("Update");
 
@@ -330,6 +335,35 @@ private void clearFields() {
     
 }
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+       String id = txtTicketID.getText().trim();
+
+    if (id.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Please enter a Ticket ID to search.");
+        return;
+    }
+
+    Ticket ticket = ticketManager.searchTicket(id);
+
+    if (ticket != null) {
+
+        txtCustomerName.setText(ticket.getCustomerName());
+        cmbCategory.setSelectedItem(ticket.getCategory());
+        txtDescription.setText(ticket.getDescription());
+        cmbStatus.setSelectedItem(ticket.getStatus());
+
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Ticket found!");
+
+    } else {
+
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Ticket not found.");
+    }
+
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
      * @param args the command line arguments
