@@ -115,8 +115,18 @@ private final TicketManager ticketManager = new TicketManager();
         });
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         btnClear.setText("Clear");
 
@@ -365,9 +375,74 @@ private void clearFields() {
 
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+    String id = txtTicketID.getText().trim();
+    String newStatus = cmbStatus.getSelectedItem().toString();
+
+    if (id.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Please enter a Ticket ID first.");
+        return;
+    }
+
+    try {
+
+        if (ticketManager.updateTicketStatus(id, newStatus)) {
+
+            refreshTable();
+
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Ticket status updated successfully!");
+
+            clearFields();
+
+        } else {
+
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Ticket not found. Please check the Ticket ID.");
+        }
+
+    } catch (IllegalArgumentException ex) {
+        javax.swing.JOptionPane.showMessageDialog(this, ex.getMessage());
+    }
+        
+    }//GEN-LAST:event_btnUpdateActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+    String id = txtTicketID.getText().trim();
+
+    if (id.isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Please enter a Ticket ID to delete.");
+        return;
+    }
+
+    int confirm = javax.swing.JOptionPane.showConfirmDialog(
+            this,
+            "Are you sure you want to delete ticket " + id + "?",
+            "Confirm Delete",
+            javax.swing.JOptionPane.YES_NO_OPTION
+    );
+
+    if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+
+        if (ticketManager.deleteTicket(id)) {
+
+            refreshTable();
+            clearFields();
+
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Ticket deleted successfully!");
+
+        } else {
+
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Ticket not found.");
+        }
+    }
+       
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
