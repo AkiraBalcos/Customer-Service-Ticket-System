@@ -1,22 +1,16 @@
 
 package customerserviceticket;
 
-import java.io.Serializable;
+public class Ticket {
 
-public class Ticket implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-   
-    
     private String ticketId;
     private String customerName;
     private String category;
     private String description;
     private String status;
 
-   
     public Ticket(String ticketId, String customerName,
-        String category, String description, String status) {
+                  String category, String description, String status) {
 
         setTicketId(ticketId);
         setCustomerName(customerName);
@@ -46,6 +40,7 @@ public class Ticket implements Serializable {
         return status;
     }
 
+    // SETTERS WITH VALIDATION
     public void setTicketId(String ticketId) {
         if (ticketId == null || ticketId.trim().isEmpty()) {
             throw new IllegalArgumentException("Ticket ID is required.");
