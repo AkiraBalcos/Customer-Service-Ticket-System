@@ -6,7 +6,6 @@ public class TicketManagerTest {
 
         TicketManager manager = new TicketManager();
 
-        // CREATE SAMPLE TICKETS
         Ticket ticket1 = new GeneralTicket(
                 "T001", "John Santos",
                 "Cannot update personal information",
@@ -19,14 +18,12 @@ public class TicketManagerTest {
                 "In Progress", "Computer", "Network Problem"
         );
 
-        // TEST ADD
         System.out.println("ADD TICKETS:");
         System.out.println(manager.addTicket(ticket1));
         System.out.println(manager.addTicket(ticket2));
 
         System.out.println("Total tickets: " + manager.getSize());
 
-        // TEST SEARCH
         System.out.println("\nSEARCH TICKET T002:");
         Ticket found = manager.searchTicket("T002");
 
@@ -36,7 +33,6 @@ public class TicketManagerTest {
             System.out.println("Ticket not found.");
         }
 
-        // TEST UPDATE
         System.out.println("\nUPDATE TICKET T001:");
         System.out.println(
                 manager.updateTicketStatus("T001", "Resolved")
@@ -46,7 +42,6 @@ public class TicketManagerTest {
                 "New status: " + manager.searchTicket("T001").getStatus()
         );
 
-        // TEST DISPLAY BY POSITION
         System.out.println("\nDISPLAY TICKETS:");
 
         for (int i = 0; i < manager.getSize(); i++) {
@@ -59,13 +54,11 @@ public class TicketManagerTest {
             );
         }
 
-        // TEST DELETE
         System.out.println("\nDELETE TICKET T002:");
         System.out.println(manager.deleteTicket("T002"));
 
         System.out.println("Remaining tickets: " + manager.getSize());
 
-        // TEST EMPTY
         System.out.println("\nIS LIST EMPTY?");
         System.out.println(manager.isEmpty());
     }

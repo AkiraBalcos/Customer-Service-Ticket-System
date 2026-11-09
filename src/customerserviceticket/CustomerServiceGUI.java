@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package customerserviceticket;
 
-/**
- *
- * @author Sumoh
- */
+
 public class CustomerServiceGUI extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CustomerServiceGUI.class.getName());
@@ -15,14 +9,49 @@ private final TicketManager ticketManager = new TicketManager();
     /**
      * Creates new form CustomerServiceGUI
      */
-  public CustomerServiceGUI() {
+  
+public CustomerServiceGUI() {
     initComponents();
 
     javax.swing.table.DefaultTableModel model =
             (javax.swing.table.DefaultTableModel) tblTickets.getModel();
 
     model.setRowCount(0);
+
+    // TABLE APPEARANCE
+    tblTickets.setRowHeight(30);
+    tblTickets.setFont(new java.awt.Font("Segoe UI", 0, 12));
+
+    tblTickets.getTableHeader().setFont(
+            new java.awt.Font("Segoe UI", 1, 12)
+    );
+
+    tblTickets.getTableHeader().setReorderingAllowed(false);
+
+    // COLUMN WIDTHS
+    tblTickets.getColumnModel().getColumn(0).setPreferredWidth(80);
+    tblTickets.getColumnModel().getColumn(1).setPreferredWidth(140);
+    tblTickets.getColumnModel().getColumn(2).setPreferredWidth(100);
+    tblTickets.getColumnModel().getColumn(3).setPreferredWidth(200);
+    tblTickets.getColumnModel().getColumn(4).setPreferredWidth(100);
+
+    // CENTER ALIGNMENT
+    javax.swing.table.DefaultTableCellRenderer centerRenderer =
+            new javax.swing.table.DefaultTableCellRenderer();
+
+    centerRenderer.setHorizontalAlignment(javax.swing.JLabel.CENTER);
+
+    tblTickets.getColumnModel().getColumn(0)
+            .setCellRenderer(centerRenderer);
+
+    tblTickets.getColumnModel().getColumn(2)
+            .setCellRenderer(centerRenderer);
+
+    tblTickets.getColumnModel().getColumn(4)
+            .setCellRenderer(centerRenderer);
 }
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.

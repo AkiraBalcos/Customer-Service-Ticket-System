@@ -2,7 +2,6 @@ package customerserviceticket;
 
 public class TicketManager {
 
-    // NODE CLASS
     private static class Node {
         Ticket ticket;
         Node next;
@@ -13,17 +12,15 @@ public class TicketManager {
         }
     }
 
-    // LINKED LIST POINTERS
     private Node head;
     private int size;
 
-    // CONSTRUCTOR
+
     public TicketManager() {
         head = null;
         size = 0;
     }
 
-    // ADD TICKET
     public boolean addTicket(Ticket ticket) {
 
         if (ticket == null || searchTicket(ticket.getTicketId()) != null) {
@@ -48,7 +45,6 @@ public class TicketManager {
         return true;
     }
 
-    // SEARCH TICKET - MANUAL LINEAR SEARCH
     public Ticket searchTicket(String ticketId) {
 
         Node current = head;
@@ -65,7 +61,6 @@ public class TicketManager {
         return null;
     }
 
-    // UPDATE TICKET STATUS
     public boolean updateTicketStatus(String ticketId, String newStatus) {
 
         Ticket ticket = searchTicket(ticketId);
@@ -106,10 +101,8 @@ public class TicketManager {
 
         return false;
     }
-    public void clearTickets() {
-    head = null;
-    size = 0;
-}
+   
+
 
    
     public int getSize() {
